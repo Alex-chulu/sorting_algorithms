@@ -8,20 +8,19 @@
  */
 listint_t *swap_node(listint_t *node, listint_t **list)
 {
-	listint_t *back_node = node->prev, *current_node = node;
-	/*NULL, 19, 48, 9, 71, 13, NULL*/
+	listint_t *back = node->prev, *current = node;
 
-	back_node->next = current_node->next;
-	if (current_node->next)
-		current_node->next->prev = back_node;
-	current_node->next = back_node;
-	current_node->prev = back_node->prev;
-	back_node->prev = current_node;
-	if (current_node->prev)
-		current_node->prev->next = current_node;
+	back->next = current->next;
+	if (current->next)
+		current->next->prev = back;
+	current->next = back;
+	current->prev = back->prev;
+	back->prev = current;
+	if (current->prev)
+		current->prev->next = current;
 	else
-		*list = current_node;
-	return (current_node);
+		*list = current;
+	return (current);
 }
 /**
  *cocktail_sort_list - cocktail sort implementation
